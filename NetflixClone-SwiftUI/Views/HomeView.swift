@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     var viewModel : HomeViewModel = HomeViewModel()
+    let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
@@ -17,10 +18,14 @@ struct HomeView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
+                    TopMoviePreview(movie: exampleMovie2)
+                    .frame(width: screenWidth)
+                        .padding(.top, -50)
+                    
                     ForEach(viewModel.allCategories, id: \.self) { (category) in
                         VStack {
                             HStack {
-                                Text(category).font(.title).bold()
+                                Text(category).font(.title).bold().padding(.horizontal, 5)
                                 Spacer()
                             }
                             

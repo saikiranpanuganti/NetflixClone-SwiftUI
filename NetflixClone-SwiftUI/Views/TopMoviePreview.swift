@@ -40,7 +40,23 @@ struct TopMoviePreview: View {
                         }
                     }
                 }
-                Text("Buttons").foregroundColor(.white).padding(.bottom, 10)
+                HStack() {
+                    Spacer()
+                    SmallVerticalButton(text: "My List", selectedImage: "checkmark", unSelectedImage: "plus", isSelected: true) {
+                        print("My List tapped")
+                    }
+                    Spacer()
+                    WhiteButton(text: "Play", imageName: "play.fill") {
+                        print("play tapped")
+                    }.frame(width: 120)
+                    Spacer()
+                    SmallVerticalButton(text: "info", selectedImage: "info.circle", unSelectedImage: "info.circle", isSelected: false) {
+                        print("info tapped")
+                    }
+                    Spacer()
+                }
+                .padding(.bottom, 10)
+                .padding(.top, 10)
             }
         }
     }

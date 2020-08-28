@@ -19,7 +19,7 @@ struct WhiteButton: View {
     var buttonTapped : () -> Void
     var body: some View {
         Button(action: {
-            
+            self.buttonTapped()
         }, label: {
             HStack {
                 Spacer()
@@ -43,7 +43,7 @@ struct WhiteButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
-            WhiteButton(text: "Play", imageName: "play.fill"){
+            WhiteButton(text: "Play", imageName: "play.fill") {
                 print("Play tapped")
             }
         }

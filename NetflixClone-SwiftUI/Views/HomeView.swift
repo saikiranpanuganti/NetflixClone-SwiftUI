@@ -10,7 +10,6 @@ import SwiftUI
 
 struct HomeView: View {
     var viewModel : HomeViewModel = HomeViewModel()
-    let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
@@ -18,7 +17,7 @@ struct HomeView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    TopMoviePreview(movie: exampleMovie2)
+                    TopMoviePreview(movie: exampleTopPreviewMovie)
                     .frame(width: screenWidth)
                         .padding(.top, -50)
                     

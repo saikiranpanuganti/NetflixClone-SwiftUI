@@ -12,14 +12,16 @@ struct HomeView: View {
     var viewModel : HomeViewModel = HomeViewModel()
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.black.edgesIgnoringSafeArea(.all)
+            
+            TopRowButtons().padding(.top, 10).zIndex(1)
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     TopMoviePreview(movie: exampleTopPreviewMovie)
-                    .frame(width: screenWidth)
-                        .padding(.top, -50)
+                        .frame(width: screenWidth)
+                        .padding(.top, -topSafeAreaHeight)
                     
                     ForEach(viewModel.allCategories, id: \.self) { (category) in
                         VStack {
@@ -46,5 +48,48 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+    }
+}
+
+struct TopRowButtons: View {
+    var body: some View {
+        HStack {
+            Button(action: {
+                print("Netflix Tapped")
+            }, label: {
+                Image("netflix")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width : 40)
+            })
+                .buttonStyle(PlainButtonStyle())
+            
+            Spacer()
+            
+            Button(action: {
+                print("TV Shows Tapped")
+            }, label: {
+                Text("TV Shows").foregroundColor(.white)
+            })
+            
+            
+            Spacer()
+            
+            Button(action: {
+                print("Movies Tapped")
+            }, label: {
+                Text("Movies").foregroundColor(.white)
+            })
+            
+            Spacer()
+            
+            Button(action: {
+                print("My List Tapped")
+            }, label: {
+                Text("My List").foregroundColor(.white)
+            })
+        }
+        .padding(.leading, 10)
+        .padding(.trailing, 30)
     }
 }

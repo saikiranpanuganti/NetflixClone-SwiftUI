@@ -29,14 +29,16 @@ struct TopMoviePreview: View {
             Image(movie.thumbnailImage).resizable().scaledToFill().clipped()
             //KFImage(movie.thumbnailURL).resizable().scaledToFill().clipped()
             VStack {
-                Spacer(minLength: 10)
-                HStack {
+                Spacer()
+                HStack(spacing: 3) {
                     ForEach(movie.categories, id: \.self) { category in
-                        HStack {
-                            Text(category).foregroundColor(.white)
+                        HStack(spacing: 3) {
+                            Text(category)
+                                .foregroundColor(.white)
+                                .font(.system(size: 12))
                             
                             if !self.isLastCategory(category: category) {
-                                Image(systemName: "circle.fill").foregroundColor(.blue).font(.system(size: 5))
+                                Image(systemName: "circle.fill").foregroundColor(.blue).font(.system(size: 2))
                             }
                         }
                     }
@@ -59,7 +61,6 @@ struct TopMoviePreview: View {
                 .padding(.bottom, 10)
                 .padding(.top, 10)
             }
-        .background(AngularGradient)
             .background(LinearGradient.blackOpacityGradient.padding(.top, screenWidth*0.75))
         }
     }
